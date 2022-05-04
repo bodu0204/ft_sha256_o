@@ -1,4 +1,5 @@
 #include"sha256.h"
+#include"debug.h"
 
 void	sha256_hash(t_sha *ctx, const void *data, size_t len)
 {
@@ -35,22 +36,39 @@ void	hash(t_sha *ctx)
 	//f = ctx->hash[5];
 	//g = ctx->hash[6];
 	//h = ctx->hash[7];
-	memcpy(ctx->hash, hs, sizeof(uint32_t) * 8);
+	memcpy(hs, ctx->hash, sizeof(uint32_t) * 8);
 
 	i = 0;
 	while (i < 64)
 	{
-		memmove(ctx->W + 1, ctx->W, sizeof(uint32_t) * 16);
+		memmove(ctx->W, ctx->W + 1, sizeof(uint32_t) * 16);
 		if (i < 16) {
 			/* ctx->W[16] = _word(&ctx->buf[_shw(i, 2)]); */ b8tob32(ctx->buf + (i * 4), ctx->W + 16);
 		} else {
-			ctx->W[16] = G1(ctx->W[14])  + ctx->W[9] +
-						G0(ctx->W[1]) + ctx->W[0];
+			ctx->W[16] = G1(ctx->W[14]) + ctx->W[9] + G0(ctx->W[1]) + ctx->W[0];
 		}
-
+/* char c;
+TESTnx(i, ctx->W[0])
+TESTnx(i + 1, ctx->W[1])
+TESTnx(i + 2, ctx->W[2])
+TESTnx(i + 3, ctx->W[3])
+TESTnx(i + 4, ctx->W[4])
+TESTnx(i + 5, ctx->W[5])
+TESTnx(i + 6, ctx->W[6])
+TESTnx(i + 7, ctx->W[7])
+TESTnx(i + 8, ctx->W[8])
+TESTnx(i + 9, ctx->W[9])
+TESTnx(i + 10, ctx->W[10])
+TESTnx(i + 11, ctx->W[11])
+TESTnx(i + 12, ctx->W[12])
+TESTnx(i + 13, ctx->W[13])
+TESTnx(i + 14, ctx->W[14])
+TESTnx(i + 15, ctx->W[15])
+TESTnx(i + 16, ctx->W[16])
+read(0, &c, 1); */
 		t[0] = hs[7] + S1(hs[4]) + Ch(hs[4], hs[5], hs[6]) + ctx->K[i] + ctx->W[16];
 		t[1] = S0(hs[0]) + Ma(hs[0], hs[1], hs[2]);
-		memmove(hs + 1, hs, sizeof(uint32_t) * 7);
+		memmove(hs, hs + 1, sizeof(uint32_t) * 7);
 		hs[4] += t[0];
 		hs[0] = t[0] + t[1];
 		//h = g;
