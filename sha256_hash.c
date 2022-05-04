@@ -48,7 +48,7 @@ void	hash(t_sha *ctx)
 						G0(ctx->W[1]) + ctx->W[0];
 		}
 
-		t[0] = h + S1(hs[4]) + Ch(hs[4], hs[5], hs[6]) + ctx->K[i] + ctx->W[16];
+		t[0] = hs[7] + S1(hs[4]) + Ch(hs[4], hs[5], hs[6]) + ctx->K[i] + ctx->W[16];
 		t[1] = S0(hs[0]) + Ma(hs[0], hs[1], hs[2]);
 		memmove(hs + 1, hs, sizeof(uint32_t) * 7);
 		hs[4] += t[0];
@@ -75,7 +75,7 @@ void	hash(t_sha *ctx)
 	i = 0;
 	while (i < 8)
 	{
-		ctx->hash[i] += sh[i];
+		ctx->hash[i] += hs[i];
 		i++;
 	}
 }

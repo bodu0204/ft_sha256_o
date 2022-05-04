@@ -33,9 +33,9 @@ void		sha256_done(t_sha *ctx, uint8_t *hash);
 
 void	hash(t_sha *ctx);
 
-unit32_t	rbit(unit32_t	x, unit32_t	n);
-void		b32tob8(unit32_t	*src, unit8_t	*dst);
-void		b8tob32(unit8_t	*src, unit32_t	*dst);
+uint32_t	rbit(uint32_t	x, uint32_t	n);
+void		b32tob8(uint32_t	*src, uint8_t	*dst);
+void		b8tob32(uint8_t	*src, uint32_t	*dst);
 
 void		sha256(const void *data, size_t len, uint8_t *hash);
 

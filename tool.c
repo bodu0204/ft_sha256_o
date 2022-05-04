@@ -1,12 +1,12 @@
 #include"sha256.h"
 
-unit32_t	rbit(unit32_t x, unit32_t n)
+uint32_t	rbit(uint32_t x, uint32_t n)
 {
 	n %= 32;
 	return ((x >> n) | (x << (32 - n)));
 }
 
-void	b32tob8(unit32_t *src, unit8_t *dst)
+void	b32tob8(uint32_t *src, uint8_t *dst)
 {
 	dest[0] = (*src >> 24);
 	dest[1] = (*src >> 16) & 0xff;
@@ -15,9 +15,9 @@ void	b32tob8(unit32_t *src, unit8_t *dst)
 	return ;
 }
 
-void	b8tob32(unit8_t *src, unit32_t *dst)
+void	b8tob32(uint8_t *src, uint32_t *dst)
 {
-	*dest = (((unit32_t)src[0]) << 24) | (((unit32_t)src[1]) << 16) \
-	 | (((unit32_t)src[2]) << 8) | ((unit32_t)src[3]);
+	*dest = (((uint32_t)src[0]) << 24) | (((uint32_t)src[1]) << 16) \
+	 | (((uint32_t)src[2]) << 8) | ((uint32_t)src[3]);
 	return ;
 }

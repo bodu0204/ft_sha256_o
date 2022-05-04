@@ -1,6 +1,6 @@
 #include"sha256.h"
 
-void	sha256_done(t_sha *ctx, uint8_t *hash)
+void	sha256_done(t_sha *ctx, uint8_t *hdst)
 {
 	size_t i;
 
@@ -48,7 +48,7 @@ void	sha256_done(t_sha *ctx, uint8_t *hash)
 	i = 0;
 	while (i < 8)
 	{
-		b32tob8(ctx->hash + i, hash + (i * 4));
+		b32tob8(ctx->hash + i, hdst + (i * 4));
 		i++;
 	}
 }
