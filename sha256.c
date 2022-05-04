@@ -14,6 +14,7 @@ void	sha256(const void *data, size_t len, uint8_t *hash)
 
 
 void showhash(uint8_t *hash);
+#include <stdio.h>
 
 int main(void)
 {

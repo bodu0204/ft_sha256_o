@@ -39,4 +39,10 @@ void		b8tob32(uint8_t	*src, uint32_t	*dst);
 
 void		sha256(const void *data, size_t len, uint8_t *hash);
 
+uint32_t	Ch(uint32_t x, uint32_t y, uint32_t z);
+uint32_t	Ma(uint32_t x, uint32_t y, uint32_t z);
+uint32_t	S0(uint32_t x);
+uint32_t	S1(uint32_t x);
+uint32_t	G0(uint32_t x);
+uint32_t	G1(uint32_t x);
 #endif

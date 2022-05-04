@@ -5,8 +5,8 @@ void	sha256_hash(t_sha *ctx, const void *data, size_t len)
 	const uint8_t	*bytes;
 	size_t			i;
 
-	ctx->bits[0] = len / 0x100000000;
-	ctx->bits[1] = len % 0x100000000;
+	ctx->bits[0] = (len * 8) / 0x100000000;
+	ctx->bits[1] = (len * 8) % 0x100000000;
 	bytes = (const uint8_t *)data;
 	i = 0;
 	while (i < len)

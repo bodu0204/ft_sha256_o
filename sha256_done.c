@@ -31,7 +31,7 @@ void	sha256_done(t_sha *ctx, uint8_t *hdst)
 	//ctx->buf[57] = _shb(ctx->bits[1], 16);
 	//ctx->buf[56] = _shb(ctx->bits[1], 24);
 	b8tob32(ctx->buf + 60, ctx->bits);
-	b8tob32(ctx->bits + 56, ctx->bits + 1);
+	b8tob32(ctx->buf + 56, ctx->bits + 1);
 	hash(ctx);
 	//if (hash != NULL) {
 	//	for (i = 0, j = 24; i < 4; i++, j -= 8) {
