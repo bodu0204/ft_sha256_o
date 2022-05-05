@@ -18,7 +18,7 @@ void showhash(uint8_t *hash);
 
 int main(void)
 {
-    char *data = "hello";
+    char *data = "";
     uint8_t hash[32];
     bzero(hash, sizeof(hash));
     sha256(data, strlen(data), hash);

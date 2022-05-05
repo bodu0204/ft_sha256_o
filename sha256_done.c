@@ -15,7 +15,7 @@ void	sha256_done(t_sha *ctx, uint8_t *hdst)
 	}
 	if (ctx->len > 55)
 	{
-TEST
+//TEST
 		hash(ctx);
 		i = 0;
 		while (i < 64)
@@ -34,7 +34,7 @@ TEST
 	//ctx->buf[56] = _shb(ctx->bits[1], 24);
 	b32tob8(ctx->bits + 1, ctx->buf + 60);
 	b32tob8(ctx->bits, ctx->buf + 56);
-TEST
+//TEST
 	hash(ctx);
 	//if (hash != NULL) {
 	//	for (i = 0, j = 24; i < 4; i++, j -= 8) {
